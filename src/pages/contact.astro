@@ -1,0 +1,85 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+
+const title = "Contact — Inzend";
+const description = "Book a consultation or reach out to discuss AI & automation initiatives.";
+---
+
+<Layout {title} {description}>
+  <Header isHome={false} />
+
+  <!-- Extra air at the top for non-home pages -->
+  <section class="relative bg-base text-fg">
+    <div class="container-base pt-28 md:pt-36 pb-20 md:pb-28">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="eyebrow fx-fade-in" data-reveal>Get in touch</span>
+        <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight fx-fade-in" data-reveal data-delay="80">
+          Let’s accelerate your roadmap
+        </h1>
+        <p class="lede mt-4 fx-fade-up" data-reveal data-delay="140">
+          Share a bit about your use case—process automation, LLM integrations, or metrics & observability.
+          I’ll reply with next steps and a clear path to value.
+        </p>
+      </div>
+
+      <!-- Value cards -->
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <div class="card p-6 fx-fade-up" data-reveal>
+          <h2 class="text-lg font-semibold">Typical outcomes</h2>
+          <ul class="mt-3 space-y-2 text-sm text-muted">
+            <li>• Reduced cycle time and manual work</li>
+            <li>• Lower error rates and faster MTTR</li>
+            <li>• Measurable ROI within weeks</li>
+          </ul>
+        </div>
+
+        <div class="card p-6 fx-fade-up" data-reveal data-delay="100">
+          <h2 class="text-lg font-semibold">Best fit</h2>
+          <ul class="mt-3 space-y-2 text-sm text-muted">
+            <li>• Ops-heavy teams and SaaS</li>
+            <li>• Founders/CTOs shipping fast</li>
+            <li>• Data-driven companies</li>
+          </ul>
+        </div>
+
+        <div class="card p-6 fx-fade-up" data-reveal data-delay="180">
+          <h2 class="text-lg font-semibold">Stack & approach</h2>
+          <ul class="mt-3 space-y-2 text-sm text-muted">
+            <li>• Astro + Tailwind (SSG) • LLM APIs</li>
+            <li>• Clean integrations • On-scroll reveal</li>
+            <li>• A11Y + SEO + JSON-LD</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Primary CTA -->
+      <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="mailto:hello@inzend.com" class="btn btn-primary fx-scale-in" data-reveal aria-label="Email hello@inzend.com">
+          Email: hello@inzend.com
+        </a>
+        <a href="/services" class="btn btn-ghost fx-fade-in" data-reveal data-delay="120">
+          View Services
+        </a>
+      </div>
+
+      <p class="mt-6 text-center text-xs text-subtle fx-fade-in" data-reveal data-delay="220">
+        Prefer a live call? Include your availability in the email and I’ll propose times.
+      </p>
+    </div>
+
+    <!-- Progressive enhancement -->
+    <script is:inline>
+      import("/src/scripts/motion.ts").then((m) => {
+        document.documentElement.classList.add("ready-anim");
+        m.mountReveal();
+        m.enhancePrimaryButtons();
+      }).catch(() => {
+        document.documentElement.classList.remove("ready-anim");
+      });
+    </script>
+  </section>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,80 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+
+const title = "Case Studies — Inzend";
+const description = "Selected work: AI & automation projects with clear outcomes and measurable ROI.";
+---
+
+<Layout {title} {description}>
+  <Header isHome={false} />
+
+  <section class="bg-base text-fg">
+    <div class="container-base pt-28 md:pt-36 pb-16 md:pb-24">
+      <div class="max-w-3xl">
+        <span class="eyebrow fx-fade-in" data-reveal>Case Studies</span>
+        <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight fx-fade-in" data-reveal data-delay="80">
+          Outcomes first, always measurable
+        </h1>
+        <p class="lede mt-4 fx-fade-up" data-reveal data-delay="140">
+          A sample of projects focused on real operational gains. Each includes goals, approach,
+          and the metrics that mattered.
+        </p>
+      </div>
+
+      <!-- Cards (placeholders; replace with real projects as you go) -->
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        <article class="card p-6 fx-fade-up" data-reveal>
+          <h2 class="text-lg font-semibold">Support Automation</h2>
+          <p class="mt-2 text-sm text-muted">LLM assistant for Tier-1 issues + routing.</p>
+          <ul class="mt-3 space-y-1 text-sm text-muted">
+            <li>• -38% average handle time</li>
+            <li>• +22% first-contact resolution</li>
+            <li>• ROI &lt; 6 weeks</li>
+          </ul>
+          <a href="/contact" class="btn btn-ghost mt-4">Discuss similar</a>
+        </article>
+
+        <article class="card p-6 fx-fade-up" data-reveal data-delay="80">
+          <h2 class="text-lg font-semibold">Sales Intelligence</h2>
+          <p class="mt-2 text-sm text-muted">Pipeline enrichment & drafting for outreach.</p>
+          <ul class="mt-3 space-y-1 text-sm text-muted">
+            <li>• +31% reply rate on warm leads</li>
+            <li>• -45% prep time for AEs</li>
+            <li>• Cost / lead down 18%</li>
+          </ul>
+          <a href="/contact" class="btn btn-ghost mt-4">Discuss similar</a>
+        </article>
+
+        <article class="card p-6 fx-fade-up" data-reveal data-delay="140">
+          <h2 class="text-lg font-semibold">Ops Observability</h2>
+          <p class="mt-2 text-sm text-muted">Telemetry & dashboards for content workflows.</p>
+          <ul class="mt-3 space-y-1 text-sm text-muted">
+            <li>• MTTR down 41%</li>
+            <li>• Quality variance -28%</li>
+            <li>• Faster weekly experiments</li>
+          </ul>
+          <a href="/contact" class="btn btn-ghost mt-4">Discuss similar</a>
+        </article>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-12">
+        <a href="/contact" class="btn btn-primary">Book a Consultation</a>
+      </div>
+    </div>
+
+    <script is:inline>
+      import("/src/scripts/motion.ts").then((m) => {
+        document.documentElement.classList.add("ready-anim");
+        m.mountReveal();
+        m.enhancePrimaryButtons();
+      }).catch(() => {
+        document.documentElement.classList.remove("ready-anim");
+      });
+    </script>
+  </section>
+
+  <Footer />
+</Layout>

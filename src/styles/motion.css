@@ -1,0 +1,10 @@
+/* motion.css — oculta SOLO cuando el módulo ya cargó y puso .ready-anim */
+@media (prefers-reduced-motion: no-preference) {
+  .ready-anim .fx-fade-up   { opacity: 0; transform: translateY(16px); }
+  .ready-anim .fx-fade-in   { opacity: 0; }
+  .ready-anim .fx-scale-in  { opacity: 0; transform: scale(.98); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx-fade-up, .fx-fade-in, .fx-scale-in { opacity: 1 !important; transform: none !important; }
+}
+.view-transition { view-transition-name: var(--vt-name, block); }

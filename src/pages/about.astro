@@ -1,0 +1,92 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+
+const title = "About — Inzend";
+const description = "Who I am, how I work, and the principles behind Inzend.";
+---
+
+<Layout {title} {description}>
+  <Header isHome={false} />
+
+  <section class="bg-base text-fg">
+    <div class="container-base pt-28 md:pt-36 pb-16 md:pb-24">
+      <div class="max-w-3xl">
+        <span class="eyebrow fx-fade-in" data-reveal>About</span>
+        <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight fx-fade-in" data-reveal data-delay="80">
+          Building quiet, effective systems
+        </h1>
+        <p class="lede mt-4 fx-fade-up" data-reveal data-delay="140">
+          I’m a software engineer focused on AI & automation. My work sits at the intersection of
+          systems design, clean implementation, and measurable outcomes.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        <section class="md:col-span-2 card p-6 fx-fade-up" data-reveal>
+          <h2 class="text-xl font-semibold">Approach</h2>
+          <ul class="mt-3 space-y-2 text-sm text-muted">
+            <li>• Start with the constraint: map the bottleneck before writing code.</li>
+            <li>• Minimal surface area: fewer moving parts, fewer failure modes.</li>
+            <li>• Instrument everything: if it ships, it emits signals.</li>
+            <li>• Accessibility & SEO as defaults: speed and reach are features.</li>
+          </ul>
+          <p class="mt-4 text-sm text-muted">
+            I prefer small, high-impact iterations over big-bang launches. Clear interfaces, strong guardrails, and fast feedback loops.
+          </p>
+        </section>
+
+        <aside class="card p-6 fx-fade-up" data-reveal data-delay="100">
+          <h3 class="text-sm font-semibold">Tools & stack</h3>
+          <ul class="mt-3 space-y-2 text-sm text-muted">
+            <li>• Astro 5, Tailwind v4 (SSG)</li>
+            <li>• LLM APIs & tooling</li>
+            <li>• Observability & tracing</li>
+            <li>• TypeScript, minimal services</li>
+          </ul>
+          <a href="/services" class="btn btn-primary mt-4 w-full">Explore services</a>
+        </aside>
+      </div>
+
+      <section class="mt-10 card p-6 fx-fade-up" data-reveal>
+        <h2 class="text-xl font-semibold">Principles</h2>
+        <div class="mt-3 grid gap-4 sm:grid-cols-2">
+          <div>
+            <h3 class="font-semibold text-sm">Functional elegance</h3>
+            <p class="mt-2 text-sm text-muted">Minimalism with purpose: every element earns its place.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-sm">Operational clarity</h3>
+            <p class="mt-2 text-sm text-muted">Clear inputs/outputs, explicit contracts, transparent metrics.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-sm">Performance first</h3>
+            <p class="mt-2 text-sm text-muted">Static by default, deferred scripts, AVIF/WebP, on-scroll reveal.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-sm">Respect for users</h3>
+            <p class="mt-2 text-sm text-muted">A11Y, prefers-reduced-motion, readable typography, no gimmicks.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Soft close: no primary button; subtle link -->
+      <p class="mt-10 text-sm text-subtle">
+        Want specifics? <a href="/case-studies" class="text-accent hover:underline">See selected work</a>.
+      </p>
+    </div>
+
+    <script is:inline>
+      import("/src/scripts/motion.ts").then((m) => {
+        document.documentElement.classList.add("ready-anim");
+        m.mountReveal();
+        m.enhancePrimaryButtons();
+      }).catch(() => {
+        document.documentElement.classList.remove("ready-anim");
+      });
+    </script>
+  </section>
+
+  <Footer />
+</Layout>

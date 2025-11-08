@@ -1,0 +1,81 @@
+---
+const title =
+  "Automate what matters. Turn complexity into leverage.";
+const subtitle =
+  "Architecture and implementation of AI & automation systems that reduce friction, accelerate operations, and deliver measurable ROI.";
+---
+
+<section
+  class="relative min-h-[100svh] grid place-items-center bg-base text-fg overflow-clip"
+  data-spotlight
+>
+  <picture class="absolute inset-0 z-0 pointer-events-none">
+    <img
+      src="/images/hero/inzend-carbon.png"
+      alt="Abstract carbon-fiber texture background"
+      class="w-full h-full object-cover"
+      style="opacity:.98; filter: contrast(1.06) brightness(1.06);"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      draggable="false"
+    />
+  </picture>
+
+  <div
+    aria-hidden
+    class="absolute inset-0 z-10 pointer-events-none"
+    style="
+      background:
+        radial-gradient(70rem 42rem at var(--spot-x,50%) var(--spot-y,38%),
+          hsl(var(--surface-3) / .18), transparent 60%),
+        linear-gradient(180deg,
+          hsl(var(--bg) / .00) 0%,
+          hsl(var(--surface-1) / .16) 100%);
+      mask:
+        radial-gradient(120rem 70rem at 50% 40%,
+          rgba(0,0,0,1) 64%,
+          rgba(0,0,0,.82) 82%,
+          rgba(0,0,0,.60) 100%);
+    "
+  ></div>
+
+  <div class="relative z-20 container-base text-center">
+    <span class="eyebrow fx-fade-in" data-reveal>AI & Automation Systems</span>
+
+    <h1
+      class="mt-4 text-balance text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold leading-tight fx-fade-in"
+      data-reveal
+      data-delay="90"
+      style="letter-spacing:-.01em;"
+    >
+      {title}
+    </h1>
+
+    <p class="lede mt-4 mx-auto max-w-3xl fx-fade-up" data-reveal data-delay="160">
+      {subtitle}
+    </p>
+
+    <div class="mt-8 flex items-center justify-center gap-3">
+      <a href="/contact" class="btn btn-primary fx-scale-in" data-reveal>Book a Consultation</a>
+      <a href="/services" class="btn btn-ghost fx-fade-in" data-reveal data-delay="140">View Services</a>
+    </div>
+
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-3 text-subtle fx-fade-in" data-reveal data-delay="240">
+      <span class="badge">Process Automation</span>
+      <span class="badge">LLM Integrations</span>
+      <span class="badge">Metrics & Observability</span>
+    </div>
+  </div>
+
+  <script is:inline>
+    import("/src/scripts/motion.ts").then((m) => {
+      document.documentElement.classList.add("ready-anim");
+      m.mountReveal();
+      m.enhancePrimaryButtons();
+      m.mountSpotlight();
+    }).catch(() => {
+      document.documentElement.classList.remove("ready-anim");
+    });
+  </script>
+</section>

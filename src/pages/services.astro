@@ -1,0 +1,146 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+
+const title = "Services — Inzend";
+const description = "AI & automation services focused on speed to value, clean integrations, and measurable ROI.";
+---
+
+<Layout {title} {description}>
+  <Header isHome={false} />
+
+  <section class="bg-base text-fg">
+    <div class="container-base pt-28 md:pt-36 pb-16 md:pb-24">
+      <div class="max-w-3xl">
+        <span class="eyebrow fx-fade-in" data-reveal>Services</span>
+        <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight fx-fade-in" data-reveal data-delay="80">
+          Ship automation that actually moves the needle
+        </h1>
+        <p class="lede mt-4 fx-fade-up" data-reveal data-delay="140">
+          Pragmatic, minimal, outcome-first. I design, implement, and instrument AI & automation systems
+          that reduce friction, shorten feedback loops, and make impact visible.
+        </p>
+      </div>
+
+      <!-- Service 1 -->
+      <section class="mt-12 grid gap-6 md:grid-cols-3">
+        <article class="md:col-span-2 card p-6 fx-fade-up" data-reveal>
+          <h2 class="text-xl font-semibold">Process Automation</h2>
+          <p class="mt-2 text-sm text-muted">
+            Eliminate repetitive work across support, ops, content, and internal tooling.
+          </p>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <div>
+              <h3 class="font-semibold text-sm">Typical deliverables</h3>
+              <ul class="mt-2 space-y-1 text-sm text-muted">
+                <li>• Workflow mapping & automation design</li>
+                <li>• API/SDK integrations (Zapier-less where possible)</li>
+                <li>• Guardrails, fallbacks, and human-in-the-loop</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold text-sm">Timeline & ROI</h3>
+              <ul class="mt-2 space-y-1 text-sm text-muted">
+                <li>• 1–3 weeks to first value</li>
+                <li>• KPIs: cycle time, error rate, $/ticket</li>
+                <li>• Observability dashboard included</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <aside class="card p-6 fx-fade-up" data-reveal data-delay="100">
+          <h3 class="text-sm font-semibold">Starting from</h3>
+          <p class="mt-2 text-2xl font-bold">$2,500</p>
+          <!-- Contextual CTA -->
+          <a href="/contact" class="btn btn-primary mt-4 w-full">Map my workflows</a>
+        </aside>
+      </section>
+
+      <!-- Service 2 -->
+      <section class="mt-10 grid gap-6 md:grid-cols-3">
+        <article class="md:col-span-2 card p-6 fx-fade-up" data-reveal>
+          <h2 class="text-xl font-semibold">LLM Integrations</h2>
+          <p class="mt-2 text-sm text-muted">
+            Practical assistants and retrieval flows integrated into your product or internal tools.
+          </p>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <div>
+              <h3 class="font-semibold text-sm">Typical deliverables</h3>
+              <ul class="mt-2 space-y-1 text-sm text-muted">
+                <li>• Task-oriented assistants (RAG, tools, evals)</li>
+                <li>• Content pipelines (summaries, QA, drafting)</li>
+                <li>• Cost controls, caching, and red-teaming</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold text-sm">Timeline & ROI</h3>
+              <ul class="mt-2 space-y-1 text-sm text-muted">
+                <li>• 2–4 weeks to first value</li>
+                <li>• KPIs: resolution rate, speed, cost/use</li>
+                <li>• Metrics wired to your BI tool</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <aside class="card p-6 fx-fade-up" data-reveal data-delay="100">
+          <h3 class="text-sm font-semibold">Starting from</h3>
+          <p class="mt-2 text-2xl font-bold">$3,500</p>
+          <!-- Contextual CTA -->
+          <a href="/contact" class="btn btn-primary mt-4 w-full">Prototype an assistant</a>
+        </aside>
+      </section>
+
+      <!-- Service 3 -->
+      <section class="mt-10 grid gap-6 md:grid-cols-3">
+        <article class="md:col-span-2 card p-6 fx-fade-up" data-reveal>
+          <h2 class="text-xl font-semibold">Metrics & Observability</h2>
+          <p class="mt-2 text-sm text-muted">
+            Instrumentation so decisions aren’t guesses. Monitor cost, quality, and reliability.
+          </p>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <div>
+              <h3 class="font-semibold text-sm">Typical deliverables</h3>
+              <ul class="mt-2 space-y-1 text-sm text-muted">
+                <li>• Event schema & telemetry setup</li>
+                <li>• Traces, dashboards, and alerts</li>
+                <li>• Experiment design & A/B evaluation</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold text-sm">Timeline & ROI</h3>
+              <ul class="mt-2 space-y-1 text-sm text-muted">
+                <li>• 1–2 weeks to first dashboards</li>
+                <li>• KPIs: uptime, latency, $/request</li>
+                <li>• Improved iteration speed</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <aside class="card p-6 fx-fade-up" data-reveal data-delay="100">
+          <h3 class="text-sm font-semibold">Starting from</h3>
+          <p class="mt-2 text-2xl font-bold">$2,000</p>
+          <!-- Contextual CTA -->
+          <a href="/contact" class="btn btn-primary mt-4 w-full">Instrument my stack</a>
+        </aside>
+      </section>
+
+      <!-- Bottom: no big button; soft link only -->
+      <p class="mt-12 text-sm text-subtle">
+        Not sure where to start? <a href="/contact" class="text-accent hover:underline">Tell me about your context</a> and we’ll map the shortest path to value.
+      </p>
+    </div>
+
+    <script is:inline>
+      import("/src/scripts/motion.ts").then((m) => {
+        document.documentElement.classList.add("ready-anim");
+        m.mountReveal();
+        m.enhancePrimaryButtons();
+      }).catch(() => {
+        document.documentElement.classList.remove("ready-anim");
+      });
+    </script>
+  </section>
+
+  <Footer />
+</Layout>

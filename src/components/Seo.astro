@@ -1,0 +1,65 @@
+---
+const {
+  title = "Inzend — Software Engineer (AI & Automation)",
+  description = "Design and delivery of AI & automation systems focused on measurable ROI.",
+  image = "/og.jpg",
+  url = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined,
+  person = {
+    name: "Inzend",
+    jobTitle: "Software Engineer — AI & Automation",
+    url: Astro.site?.toString(),
+    sameAs: [
+      "https://github.com/inzend",
+      "https://www.linkedin.com/in/inzend/",
+      "https://x.com/inzend"
+    ]
+  }
+} = Astro.props;
+---
+
+<!-- Basics -->
+<title>{title}</title>
+<meta name="description" content={description} />
+{url && <link rel="canonical" href={url} />}
+
+<!-- Indexing hints -->
+<meta name="robots" content="index,follow,max-image-preview:large" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+{url && <meta property="og:url" content={url} />}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+
+<!-- JSON-LD Person -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: person.name,
+  jobTitle: person.jobTitle,
+  url: person.url,
+  image,
+  sameAs: person.sameAs
+})} />
+
+<!-- Optional: JSON-LD WebSite for sitelinks -->
+{Astro.site && (
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    url: Astro.site.toString(),
+    name: "Inzend",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${Astro.site.toString()}search?q={query}`,
+      "query-input": "required name=query"
+    }
+  })} />
+)}

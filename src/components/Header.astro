@@ -1,0 +1,185 @@
+---
+const { isHome = false } = Astro.props;
+
+const links = [
+  { href: "/services", label: "Services" },
+  { href: "/case-studies", label: "Case Studies" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
+// Ruta del logo (colócalo en /public o /public/images)
+const LOGO_SRC = "/inzend-logo.png"; // o "/images/inzend-logo.png"
+---
+
+<div
+  id="header-root"
+  class="fixed inset-x-0 z-[var(--z-header)] pointer-events-none flex justify-center"
+  style={`
+    --safe-top: env(safe-area-inset-top, 0px);
+    --offset: clamp(10px, 2.5vh, 22px);
+    --height: 74px;
+    --container-w: var(--container-base);
+    top: calc(var(--offset) + var(--safe-top));
+  `}
+  data-state={isHome ? "top" : "pill"}
+  data-mode={isHome ? "auto" : "force-pill"}
+>
+  <header class="pointer-events-auto w-full" aria-label="Primary navigation">
+    <div class="relative mx-auto w-full" style="max-width: var(--container-w);">
+      <!-- Pill background -->
+      <div class="absolute inset-x-0 top-0" aria-hidden="true">
+        <div class="relative h-[var(--height)] px-2 sm:px-3 lg:px-4">
+          <div id="pill-bg" class="absolute left-0 right-0 rounded-full" style="top:0; height: var(--height);"></div>
+        </div>
+      </div>
+
+      <div id="row" class="relative z-10 grid grid-cols-[auto_1fr_auto] items-center gap-3"
+           style="height: var(--height); padding-inline: clamp(16px, 3vw, 32px);">
+        <!-- Brand -->
+        <a href="/" class="relative flex items-center gap-2 rounded-md focus-visible:outline-2 focus-visible:outline-[hsl(var(--ring))]" aria-label="Inzend — Home">
+          <img
+            src={LOGO_SRC}
+            alt="Inzend logo"
+            width="112" height="24"
+            class="h-6 w-auto block"
+            decoding="async"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center justify-center gap-2 sm:gap-3 text-sm" aria-label="Main">
+          {links.map(l => (
+            <a href={l.href} class="nav-link rounded-full px-3 py-1.5">{l.label}</a>
+          ))}
+        </nav>
+
+        <!-- CTA / Mobile -->
+        <div class="flex items-center gap-2">
+          <a href="/contact" class="btn-cta hidden sm:inline-flex">Book a Consultation</a>
+          <button id="btn-mobile" class="md:hidden p-2 rounded-md focus-visible:outline-2 focus-visible:outline-[hsl(var(--ring))]" aria-label="Open menu">
+            <svg id="icon-menu"  class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 6h16v2H4zM4 11h16v2H4zM4 16h16v2H4z"/></svg>
+            <svg id="icon-close" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Panel -->
+      <div id="mobile-sheet"
+           class="md:hidden fixed z-[calc(var(--z-header)-1)] opacity-0 pointer-events-none translate-y-[-6px] transition-all duration-250 ease-out"
+           style="top: calc(var(--offset) + var(--safe-top) + var(--height) + 8px);
+                  left: 50%; width: min(calc(100vw - 24px), var(--container-w));
+                  transform: translate(-50%, -6px);">
+        <div class="rounded-2xl border border-line bg-surface-2/95 backdrop-blur shadow-[var(--shadow-lg)] overflow-hidden" style="max-height: 70dvh;">
+          <nav class="px-5 pt-5 pb-6 space-y-1" aria-label="Mobile">
+            {links.map(l => (<a href={l.href} class="mobile-link">{l.label}</a>))}
+            <div class="pt-5 mt-1 border-t border-line/70">
+              <a href="/contact" class="block w-full text-center btn-cta">Book a Consultation</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <style>
+    #header-root[data-state="top"] {
+      --hdr-bg: color-mix(in oklab, hsl(var(--bg)) 0%, transparent 100%);
+      --hdr-ring: transparent;
+      --hdr-text: hsl(var(--fg));
+      --cta-bg: hsl(var(--accent));
+      --cta-fg: hsl(var(--on-accent));
+      --blur: saturate(1.0) blur(0px);
+    }
+    #header-root[data-state="pill"] {
+      --hdr-bg: color-mix(in oklab, hsl(var(--surface-1)) 78%, transparent 22%);
+      --hdr-ring: hsl(var(--line));
+      --hdr-text: hsl(var(--fg));
+      --cta-bg: hsl(var(--accent));
+      --cta-fg: hsl(var(--on-accent));
+      --blur: saturate(1.1) blur(10px);
+    }
+
+    #pill-bg{
+      background: var(--hdr-bg);
+      border: 1px solid var(--hdr-ring);
+      border-radius: 9999px;
+      backdrop-filter: var(--blur);
+      box-shadow: 0 8px 24px hsl(var(--bg) / .35), inset 0 1px 0 hsl(var(--on-accent) / .03);
+      transition: background .25s var(--ease-standard), border-color .25s var(--ease-standard), box-shadow .35s var(--ease-standard), backdrop-filter .25s var(--ease-standard);
+    }
+
+    .nav-link{
+      color: hsl(var(--fg-muted));
+      transition: color .2s var(--ease-standard), background-color .2s var(--ease-standard);
+    }
+    .nav-link:hover{ color: hsl(var(--fg)); background: hsl(var(--surface-2) / .6); }
+
+    .btn-cta{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:.65rem 1rem; border-radius: var(--radius-full);
+      background: var(--cta-bg); color: var(--cta-fg);
+      box-shadow: var(--shadow-sm);
+      font-weight: 600;
+      transition: transform .15s ease, box-shadow .25s ease, filter .2s ease;
+    }
+    .btn-cta:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+
+    .mobile-link{
+      display:block; padding:.9rem .5rem; border-radius:.75rem; font-size:1.05rem;
+      color: hsl(var(--fg));
+    }
+    .mobile-link:hover{ background: hsl(var(--surface-3)); }
+
+    @media (prefers-reduced-motion: reduce){
+      #pill-bg, .btn-cta, .nav-link { transition: none !important; }
+    }
+  </style>
+
+  <script>
+    (() => {
+      const root = document.getElementById('header-root');
+      const sheet = document.getElementById('mobile-sheet');
+      const btnMobile = document.getElementById('btn-mobile');
+      const iconMenu = document.getElementById('icon-menu');
+      const iconClose = document.getElementById('icon-close');
+
+      const MODE = root?.getAttribute('data-mode'); // 'auto' | 'force-pill'
+      let open = false;
+      const setState = (s) => root?.setAttribute('data-state', s);
+
+      const apply = () => {
+        if (MODE === 'force-pill') { setState('pill'); return; }
+        const atTop = window.scrollY < 8 && !open;
+        setState(atTop ? 'top' : 'pill');
+      };
+
+      function openSheet(){
+        open = true;
+        sheet.style.pointerEvents = 'auto';
+        sheet.style.opacity = '1';
+        sheet.style.transform = 'translate(-50%, 0)';
+        iconMenu?.classList.add('hidden'); iconClose?.classList.remove('hidden');
+        document.documentElement.classList.add('overflow-hidden','touch-none');
+        apply();
+      }
+      function closeSheet(){
+        open = false;
+        sheet.style.pointerEvents = 'none';
+        sheet.style.opacity = '0';
+        sheet.style.transform = 'translate(-50%, -6px)';
+        iconMenu?.classList.remove('hidden'); iconClose?.classList.add('hidden');
+        document.documentElement.classList.remove('overflow-hidden','touch-none');
+        apply();
+      }
+      btnMobile?.addEventListener('click', () => (open ? closeSheet() : openSheet()));
+      apply();
+      if (MODE !== 'force-pill') {
+        window.addEventListener('scroll', apply, { passive: true });
+        window.addEventListener('resize', apply);
+      }
+    })();
+  </script>
+</div>

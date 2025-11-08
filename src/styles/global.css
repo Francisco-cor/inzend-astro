@@ -1,0 +1,14 @@
+/* global.css — Punto de entrada de estilos */
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./typography.css";
+@import "./motion.css";
+@import "./utilities.css";
+
+/* Base */
+:root { background-color: hsl(var(--bg)); color: hsl(var(--fg)); }
+html { scroll-behavior: smooth; }
+body { @apply bg-transparent text-base; }
+
+/* Selección */
+::selection { background: hsl(var(--accent)); color: hsl(var(--on-accent)); }

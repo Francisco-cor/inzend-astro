@@ -1,0 +1,103 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+
+const title = "Privacy Policy — Inzend";
+const description = "How your information is collected, used, and protected.";
+const updated = "2025-11-04";
+---
+
+<Layout {title} {description}>
+  <Header isHome={false} />
+
+  <section class="bg-base text-fg">
+    <div class="container-base pt-28 md:pt-36 pb-16 md:pb-24">
+      <header class="max-w-3xl">
+        <span class="eyebrow fx-fade-in" data-reveal>Legal</span>
+        <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight fx-fade-in" data-reveal data-delay="80">
+          Privacy Policy
+        </h1>
+        <p class="text-sm text-subtle mt-2 fx-fade-in" data-reveal data-delay="120">Last updated: {updated}</p>
+        <p class="lede mt-4 fx-fade-up" data-reveal data-delay="160">
+          We keep data minimal and use it only to provide services, improve the site, and communicate with you.
+        </p>
+      </header>
+
+      <article class="prose-invert max-w-3xl mt-8 space-y-6">
+        <section class="card p-6 fx-fade-up" data-reveal>
+          <h2 class="text-xl font-semibold">Information we collect</h2>
+          <p class="text-sm text-muted mt-2">
+            • Contact details you send us (e.g., email).<br />
+            • Basic analytics (aggregated, non-identifying).<br />
+            • Project materials you choose to share for work.
+          </p>
+        </section>
+
+        <section class="card p-6 fx-fade-up" data-reveal data-delay="80">
+          <h2 class="text-xl font-semibold">How we use information</h2>
+          <ul class="mt-2 space-y-1 text-sm text-muted">
+            <li>• To respond to inquiries and deliver services.</li>
+            <li>• To maintain and improve this website.</li>
+            <li>• To send transactional or project-related communications.</li>
+          </ul>
+        </section>
+
+        <section class="card p-6 fx-fade-up" data-reveal data-delay="120">
+          <h2 class="text-xl font-semibold">Data sharing</h2>
+          <p class="text-sm text-muted mt-2">
+            We do not sell personal data. We may share limited information with service providers
+            (e.g., hosting, analytics, communications) under strict confidentiality and only as needed to operate.
+          </p>
+        </section>
+
+        <section class="card p-6 fx-fade-up" data-reveal data-delay="160">
+          <h2 class="text-xl font-semibold">Retention</h2>
+          <p class="text-sm text-muted mt-2">
+            We keep data only for as long as necessary for the purposes above or as required by law.
+            You can request deletion of your information at any time.
+          </p>
+        </section>
+
+        <section class="card p-6 fx-fade-up" data-reveal data-delay="200">
+          <h2 class="text-xl font-semibold">Your choices</h2>
+          <ul class="mt-2 space-y-1 text-sm text-muted">
+            <li>• You can request access, correction, or deletion of your data.</li>
+            <li>• You can opt out of non-essential communications.</li>
+            <li>• You can limit cookies via your browser settings.</li>
+          </ul>
+        </section>
+
+        <section class="card p-6 fx-fade-up" data-reveal data-delay="240">
+          <h2 class="text-xl font-semibold">Security</h2>
+          <p class="text-sm text-muted mt-2">
+            We use reasonable technical and organizational measures to protect information.
+            No method is 100% secure, but we aim for least-privilege access and minimal data storage.
+          </p>
+        </section>
+
+        <section class="card p-6 fx-fade-up" data-reveal data-delay="280">
+          <h2 class="text-xl font-semibold">Contact</h2>
+          <p class="text-sm text-muted mt-2">
+            Questions about this policy? Email <a class="text-accent hover:underline" href="mailto:hello@inzend.com">hello@inzend.com</a>.
+          </p>
+        </section>
+      </article>
+
+      <div class="mt-10">
+        <a href="/contact" class="btn btn-primary">Book a Consultation</a>
+      </div>
+    </div>
+
+    <script is:inline>
+      import("/src/scripts/motion.ts").then((m) => {
+        document.documentElement.classList.add("ready-anim");
+        m.mountReveal();
+      }).catch(() => {
+        document.documentElement.classList.remove("ready-anim");
+      });
+    </script>
+  </section>
+
+  <Footer />
+</Layout>

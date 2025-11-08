@@ -1,0 +1,35 @@
+/* typography.css */
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi/Satoshi-Italic-Variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --leading-tight: 1.15;
+  --leading-normal: 1.45;
+  --tracking-tight: -0.01em;
+  --tracking-wide: 0.02em;
+}
+
+html { font-family: var(--font-sans); }
+h1,h2,h3,h4 { letter-spacing: var(--tracking-tight); }
+.lede { /* párrafo de apertura */
+  font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.35rem);
+  line-height: var(--leading-normal);
+  color: hsl(var(--fg-muted));
+  text-wrap: balance;
+}
+.eyebrow {
+  @apply uppercase tracking-widest text-xs text-accent;
+  letter-spacing: .18em;
+}

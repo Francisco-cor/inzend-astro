@@ -1,0 +1,14 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Hero from "@/components/home/Hero.astro";
+import Footer from "@/components/Footer.astro";
+
+const title = "Inzend — IA & Automatización";
+const description = "Arquitectura y delivery de sistemas inteligentes para ROI medible.";
+---
+<Layout {title} {description}>
+  <Header isHome={true} />
+  <Hero />
+  <Footer />
+</Layout>
